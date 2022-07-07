@@ -9,6 +9,7 @@ const getQuizes = asyncHandler(async (req, res) => {
   const category = await Category.find({ name: req.query.name });
 
   console.log(quizes);
+  console.log(quizes);
 
   /*   const quizes = [
     {
