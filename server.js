@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/users", require("./routes/userRoutes"));
+app.get("/", (req, res) => {
+  res.send("welcome to elite quize api");
+});
 app.use("/api/quiz", require("./routes/quizRoutes"));
 app.use("/api/categories", require("./routes/categoryRoutes"));
 app.use(errorHandler);
