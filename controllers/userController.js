@@ -15,7 +15,7 @@ const generateJwt = (id) => {
 // @route: POST /api/users/signup
 // @access: public
 const registerUser = asyncHandler(async (req, res) => {
-  console.log("signup");
+  console.log("signupdbdb");
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.status(400);
