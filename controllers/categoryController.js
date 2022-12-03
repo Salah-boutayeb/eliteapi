@@ -39,6 +39,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
   res.json({ id: category.id }).status(200);
 });
 const postCategory = asyncHandler(async (req, res) => {
+  console.log("new category");
   console.log(req.headers.authorization);
   if (!req.body.name) {
     res.status(400);
