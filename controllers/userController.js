@@ -94,7 +94,11 @@ const getUser = asyncHandler(async (req, res) => {
     })
     .status(200);
 });
+const getRanking = asyncHandler(async (req, res) => {
+  const users = await User.find().select("-password");
 
+  res.json(users).status(200);
+});
 const updateScore = asyncHandler(async (req, res) => {
   const { id, score } = req.body;
   console.log("scooooooore");
@@ -119,4 +123,5 @@ module.exports = {
   userLogin,
   getUser,
   updateScore,
+  getRanking,
 };

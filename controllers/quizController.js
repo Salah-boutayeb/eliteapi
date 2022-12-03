@@ -8,10 +8,6 @@ const getQuizes = asyncHandler(async (req, res) => {
   const quizes = [];
   const category = await Category.find({ name: req.query.name });
 
-  console.log(quizes);
-  console.log(quizes);
-  console.log(quizes);
-
   /*   const quizes = [
     {
       title: "title of quiz number 1",
@@ -36,21 +32,6 @@ const getQuizes = asyncHandler(async (req, res) => {
   res.json(quizes).status(200);
 });
 
-const addQuiz = async (req, res) => {
-  console.log(req.body);
-
-  const { question, answers, category } = req.body;
-
-  res.send("ok").status(200);
-};
-
-const deleteQuiz = async (req, res) => {
-  console.log(req.body);
-  res.send("ok").status(200);
-};
-
 module.exports = {
   getQuizes,
-  addQuiz,
-  deleteQuiz,
 };

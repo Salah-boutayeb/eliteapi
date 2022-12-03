@@ -9,7 +9,6 @@ const { protect } = require("../middleware/authMiddelware");
 
 router.get("/questions", protect, getQuestions);
 router.get("/category", protect, getQuizes);
-
-router.post("/", protect, addQuestion);
+router.post("/", addQuestion);
 
 module.exports = router;
