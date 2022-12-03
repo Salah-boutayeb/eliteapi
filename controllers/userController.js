@@ -95,7 +95,11 @@ const getUser = asyncHandler(async (req, res) => {
     .status(200);
 });
 const getRanking = asyncHandler(async (req, res) => {
-  const users = await User.find().select("-password");
+  const users = await User.find().select([
+    "-password",
+    "-createdAt",
+    "-updatedAt",
+  ]);
 
   res.json(users).status(200);
 });
