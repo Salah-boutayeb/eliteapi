@@ -29,7 +29,7 @@ const getQuestions = asyncHandler(async (req, res) => {
 
   let quizes = [];
   const quizesdb = await Quiz.find({
-    categoryId: req.query.idCategory,
+    
   }).populate("answers");
   quizesdb.forEach((element) => {
     let answers = {};
@@ -102,7 +102,7 @@ const addQuestion = async (req, res) => {
 
   const { question, answers, category } = req.body;
   let answer = null;
-  const quiz = new Quiz({
+  const quiz = new Quiz({ 
     title: question,
     categoryId: category,
   });

@@ -7,7 +7,7 @@ const {
 const { getQuizes } = require("../controllers/quizController");
 const { protect } = require("../middleware/authMiddelware");
 
-router.get("/questions", protect, getQuestions);
+router.get("/questions", getQuestions);
 router.get("/category", protect, getQuizes);
 router.post("/", addQuestion);
 

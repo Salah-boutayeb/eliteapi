@@ -95,6 +95,7 @@ const getUser = asyncHandler(async (req, res) => {
     .status(200);
 });
 const getRanking = asyncHandler(async (req, res) => {
+  console.log("scooooooore");
   const users = await User.find().select([
     "-password",
     "-createdAt",
@@ -105,7 +106,7 @@ const getRanking = asyncHandler(async (req, res) => {
 });
 const updateScore = asyncHandler(async (req, res) => {
   const { id, score } = req.body;
-  console.log("scooooooore");
+ 
   const user = await User.findOneAndUpdate(
     { _id: id },
     { score: score },
