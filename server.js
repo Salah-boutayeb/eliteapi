@@ -2,17 +2,14 @@ const express = require("express");
 const colors = require("colors");
 const connectDB = require("./config/db");
 var cors = require('cors');
-
 const { errorHandler } = require("./middleware/middleware");
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 5555;
 connectDB();
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 app.use("/api/users", require("./routes/userRoutes"));
 app.get("/", (req, res) => {
   res.send("welcome to elite quize api");

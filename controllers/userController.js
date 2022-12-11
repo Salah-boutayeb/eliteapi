@@ -3,13 +3,11 @@ const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 /*  **************************generate jwt *******************************  */
-
 const generateJwt = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
-
 /*  *****************************************************  */
 // @desc: user registration
 // @route: POST /api/users/signup
@@ -37,7 +35,6 @@ const registerUser = asyncHandler(async (req, res) => {
   });
   /* create user */
   console.log(user);
-
   if (user) {
     res.status(201).json({
       id: user.id,
@@ -51,7 +48,6 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("invalid user data");
   }
 });
-
 /*  *********************************************************  */
 // @desc: user registration
 // @route: GET /api/users/login
@@ -85,7 +81,6 @@ const userLogin = asyncHandler(async (req, res) => {
 // @access: public
 const getUser = asyncHandler(async (req, res) => {
   const { _id, name, email } = await User.findById(req.user.id);
-
   res
     .json({
       id: _id,
@@ -122,7 +117,6 @@ const updateScore = asyncHandler(async (req, res) => {
     .status(200);
 });
 /*  *********************************************************  */
-
 module.exports = {
   registerUser,
   userLogin,
