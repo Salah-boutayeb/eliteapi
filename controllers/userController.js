@@ -90,7 +90,6 @@ const getUser = asyncHandler(async (req, res) => {
     .status(200);
 });
 const getRanking = asyncHandler(async (req, res) => {
-  console.log("scooooooore");
   const users = await User.find()
     .select(["-password", "-createdAt", "-updatedAt"])
     .sort({ _id: 1 });
