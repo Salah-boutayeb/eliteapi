@@ -91,17 +91,15 @@ const getUser = asyncHandler(async (req, res) => {
 });
 const getRanking = asyncHandler(async (req, res) => {
   console.log("scooooooore");
-  const users = await User.find().select([
-    "-password",
-    "-createdAt",
-    "-updatedAt",
-  ]);
+  const users = await User.find()
+    .select(["-password", "-createdAt", "-updatedAt"])
+    .sort({ _id: 1 });
 
   res.json(users).status(200);
 });
 const updateScore = asyncHandler(async (req, res) => {
   const { id, score } = req.body;
- 
+
   const user = await User.findOneAndUpdate(
     { _id: id },
     { score: score },
