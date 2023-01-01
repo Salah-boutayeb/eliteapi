@@ -1,8 +1,8 @@
 const express = require("express");
 const colors = require("colors");
-const connectDB = require("./config/db");
-var cors = require('cors');
-const { errorHandler } = require("./middleware/middleware");
+const connectDB = require("./src/config/db");
+var cors = require("cors");
+const { errorHandler } = require("./src/middleware/middleware");
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 5555;
 connectDB();
@@ -10,11 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users", require("./src/routes/userRoutes"));
 app.get("/", (req, res) => {
   res.send("welcome to elite quize api");
 });
-app.use("/api/quiz", require("./routes/quizRoutes"));
-app.use("/api/categories", require("./routes/categoryRoutes"));
+app.use("/api/quiz", require("./src/routes/quizRoutes"));
+app.use("/api/categories", require("./src/routes/categoryRoutes"));
 app.use(errorHandler);
 app.listen(port, () => console.log(`server started on port :${port}`));

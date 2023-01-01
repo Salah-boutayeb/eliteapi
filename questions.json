@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is the scientific name of a butterfly?",
+    "answers": {
+      "Apis": false,
+      "Coleoptera": false,
+      "Formicidae": false,
+      "Rhopalocera": true
+    }
+  },
+  {
+    "question": "How hot is the surface of the sun?",
+    "answers": {
+      "1,233 K": false,
+      "5,778 K": true,
+      "12,130 K": false,
+      "101,300 K": false
+    }
+  },
+  {
+    "question": "Who are the actors in The Internship?",
+    "answers": {
+      "Ben Stiller, Jonah Hill": false,
+      "Courteney Cox, Matt LeBlanc": false,
+      "Kaley Cuoco, Jim Parsons": false,
+      "Vince Vaughn, Owen Wilson": true
+    }
+  },
+  {
+    "question": "What is the capital of Spain?",
+    "answers": {
+      "Berlin": false,
+      "Buenos Aires": false,
+      "Madrid": true,
+      "San Juan": false
+    }
+  }
+]

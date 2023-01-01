@@ -62,7 +62,7 @@ const userLogin = asyncHandler(async (req, res) => {
   // sheck if user already exists
   const userExists = await User.findOne({ email });
   if (userExists && (await bycrypt.compare(password, userExists.password))) {
-    console.log("existss");
+    console.log("exists");
     res.status(201).json({
       id: userExists.id,
       name: userExists.name,
@@ -90,28 +90,25 @@ const getUser = asyncHandler(async (req, res) => {
     .status(200);
 });
 const getRanking = asyncHandler(async (req, res) => {
+  console.log("i want sorted rank");
   const users = await User.find()
     .select(["-password", "-createdAt", "-updatedAt"])
-    .sort({ _id: 1 });
+    .sort({ score: -1 });
 
   res.json(users).status(200);
 });
 const updateScore = asyncHandler(async (req, res) => {
-  const { id, score } = req.body;
+  const { idUser, score } = req.body;
+  console.log(req.body);
 
   const user = await User.findOneAndUpdate(
-    { _id: id },
+    { _id: idUser },
     { score: score },
     {
       new: true,
     }
   );
-  console.log(user);
-  res
-    .json({
-      score,
-    })
-    .status(200);
+  res.status(202).send({ message: "user's score successfully updated" });
 });
 /*  *********************************************************  */
 module.exports = {

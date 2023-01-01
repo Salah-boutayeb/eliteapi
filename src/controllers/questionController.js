@@ -28,9 +28,7 @@ const getQuestions = asyncHandler(async (req, res) => {
   console.log(req.query);
 
   let quizes = [];
-  const quizesdb = await Quiz.find({
-    
-  }).populate("answers");
+  const quizesdb = await Quiz.find({}).populate("answers");
   quizesdb.forEach((element) => {
     let answers = {};
     let shuffeledTable = shuffle(element.answers);
@@ -40,69 +38,15 @@ const getQuestions = asyncHandler(async (req, res) => {
     quizes.push({ question: element.title, answers: answers });
   });
   console.log(quizes);
-  /*   const quiz = [
-    {
-      question:
-        "How Many Whiskers does the average cat have on each side of its face ?",
-      answers: {
-        1: false,
-        3: false,
-        12: true,
-        "5,007": false,
-      },
-    },
-    {
-      question:
-        "How Many Whiskers does the average cat have on each side of its face ?",
-      answers: {
-        1: false,
-        3: false,
-        12: true,
-        "5,007": false,
-      },
-    },
-    {
-      question:
-        "How Many Whiskers does the average cat have on each side of its face ?",
-      answers: {
-        1: false,
-        3: false,
-        12: true,
-        "5,007": false,
-      },
-    },
-    {
-      question:
-        "How Many Whiskers does the average cat have on each side of its face ?",
-      answers: {
-        1: false,
-        3: false,
-        12: true,
-        "5,007": false,
-      },
-    },
-    {
-      question:
-        "How Many Whiskers does the average cat have on each side of its face ?",
-      answers: {
-        1: false,
-        3: false,
-        12: true,
-        5.007: false,
-      },
-    },
-  ]; */
-
   res.json(quizes).status(200);
 });
 
 const addQuestion = async (req, res) => {
-  console.log(req.headers.authorization);
   let answersTable = [];
 
   const { question, answers, category } = req.body;
   let answer = null;
-  const quiz = new Quiz({ 
+  const quiz = new Quiz({
     title: question,
     categoryId: category,
   });
@@ -123,7 +67,7 @@ const addQuestion = async (req, res) => {
       return handleError(err);
     }
   });
-  res.send("ok1").status(200);
+  res.status(201).json({ message: "question added successfully" });
 };
 
 module.exports = {
