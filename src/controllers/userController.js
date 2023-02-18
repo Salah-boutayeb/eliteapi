@@ -13,7 +13,7 @@ const generateJwt = (id) => {
 // @route: POST /api/users/signup
 // @access: public
 const registerUser = asyncHandler(async (req, res) => {
-  console.log("signupdbdb");
+  
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.status(400);
@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
     password: hashPassword,
   });
   /* create user */
-  console.log(user);
+  
   if (user) {
     res.status(201).json({
       id: user.id,
@@ -53,7 +53,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route: GET /api/users/login
 // @access: public
 const userLogin = asyncHandler(async (req, res) => {
-  console.log(req.body);
+  
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(400);
@@ -62,7 +62,7 @@ const userLogin = asyncHandler(async (req, res) => {
   // sheck if user already exists
   const userExists = await User.findOne({ email });
   if (userExists && (await bycrypt.compare(password, userExists.password))) {
-    console.log("exists");
+    
     res.status(201).json({
       id: userExists.id,
       name: userExists.name,
@@ -90,7 +90,7 @@ const getUser = asyncHandler(async (req, res) => {
     .status(200);
 });
 const getRanking = asyncHandler(async (req, res) => {
-  console.log("i want sorted rank");
+  
   const users = await User.find()
     .select(["-password", "-createdAt", "-updatedAt"])
     .sort({ score: -1 });
@@ -99,7 +99,7 @@ const getRanking = asyncHandler(async (req, res) => {
 });
 const updateScore = asyncHandler(async (req, res) => {
   const { idUser, score } = req.body;
-  console.log(req.body);
+  
 
   const user = await User.findOneAndUpdate(
     { _id: idUser },

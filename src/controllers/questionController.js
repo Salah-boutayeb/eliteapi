@@ -25,7 +25,7 @@ function shuffle(array) {
 }
 
 const getQuestions = asyncHandler(async (req, res) => {
-  console.log(req.query);
+  
 
   let quizes = [];
   const quizesdb = await Quiz.find({}).populate("answers");
@@ -37,7 +37,7 @@ const getQuestions = asyncHandler(async (req, res) => {
     });
     quizes.push({ question: element.title, answers: answers });
   });
-  console.log(quizes);
+  
   res.json(quizes).status(200);
 });
 
