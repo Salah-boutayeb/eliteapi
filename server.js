@@ -17,4 +17,4 @@ app.get("/", (req, res) => {
 app.use("/api/quiz", require("./src/routes/quizRoutes"));
 app.use("/api/categories", require("./src/routes/categoryRoutes"));
 app.use(errorHandler);
-app.listen(port, () => console.log(`server started on port :${port}`));
+app.listen(port, () => {});

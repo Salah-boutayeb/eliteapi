@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 const Quiz = require("../models/quizTestModel");
 
 const getQuizes = asyncHandler(async (req, res) => {
-  console.log(req.query.id);
+  
   const quizes = [];
   const category = await Category.find({ name: req.query.name });
 
